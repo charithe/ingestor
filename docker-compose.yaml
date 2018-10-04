@@ -1,0 +1,22 @@
+version: "3"
+services:
+  ingestor:
+    build: .
+    command:
+      - "ingest"
+      - "--listen=:8080"
+      - "--update_svc=updater:8090"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "updater"
+
+  updater:
+    build: .
+    command: 
+      - "update"
+      - "--listen=:8090"
+    ports:
+      - "8090:8090"
+
+

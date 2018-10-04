@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package io.github.charithe.updater.v1;
+
+option go_package = "v1pb";
+
+message UpdateRequest {
+  int64 id = 1;
+  string name = 2;
+  string email = 3;
+  string mobile_number = 4;
+}
+
+enum UpdateStatus {
+  OK = 0;
+  ERROR = 1;
+}
+
+message UpdateResponse {
+  int64 id = 1;
+  UpdateStatus status = 2;
+}
+
+service Updater {
+  // receives a stream of UpdateRequests and streams back an UpdateResponse for each
+  rpc Update(stream UpdateRequest) returns (stream UpdateResponse);
+}
