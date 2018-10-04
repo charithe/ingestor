@@ -22,7 +22,7 @@ The above command starts the services and binds them to port 8080 and 8090. To t
 command:
 
 ```shell
-curl -XPOST --data-binary @path/to/data.csv 'localhost:8080'
+curl -XPOST --data-binary @path/to/data.csv 'localhost:8080/ingest'
 ```
 
 Alternatively, you can build the Docker images yourself by running `make docker`. This will create a Docker image
